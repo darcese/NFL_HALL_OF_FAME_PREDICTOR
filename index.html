@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="front_page_style.css">
+</head>
+
+<body>
+
+  <div class="full-page-grid-container">
+    <div id="enter-string-or-stats-option-container" style="position: relative; top: 1em;">
+      <p>
+        <p><b>Predict by</b></p>
+        &nbsp;&nbsp;
+        <button id="playerNameButton"
+          style="border-color:rgb(159, 235, 159); background-color: rgb(167, 230, 167);"><b>Player name</b></button>
+        &nbsp;&nbsp;
+        <p><b>or By</b></p>
+        &nbsp;&nbsp;
+        <button id="statsButton"
+          style="border-color:rgb(235, 221, 159); background-color: rgb(230, 221, 167);"><b>Entering
+            Stats</button><b></button>
+        </b>
+      </p>
+    </div>
+  </div>
+  <div id="search-by-player-container">
+    <input type="text" list="player-list-input" id="player-input" name="player-choice"/>
+    <datalist id="player-list-input">
+      <!--option id="Chocolate" value="Czhocolate">
+      <option value="Coconut">
+      -->
+    </datalist>
+    <button id="go-button" onclick="goButtonClick()" style=" border-radius: 2em / 2em;">GO</button>
+  </div>
+ <!----------->
+  <div id="search-by-stats-container">
+    <table id="predict-by-stats-table">
+      <thead>
+        <tr id='position-row'>
+          <td>
+            POSITION
+          </td>
+          <td>
+            <select name="postions" id="position-select">
+              <option value="POS VALUE" selected="selected" id="SELECT POS">SELECT POS</option>
+              <option value="QB">QB</option>
+              <option value="WR">WR</option>
+              <option value="RB">RB</option>
+              <option value="OT">OT</option>
+              <option value="OG">OG</option>
+              <option value="C">C</option>
+              <option value="TE">TE</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Stat 1 Name</td>
+          <td> Stat 1 Value</td>
+        </tr>
+        <tr>
+          <td>Stat 2 Name</td>
+          <td> Stat 2 Value</td>
+        </tr>
+        </tbody>
+    </table>
+    <label for="position-select"></label>
+
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
