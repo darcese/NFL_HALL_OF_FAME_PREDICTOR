@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/Users/danielarcese/Desktop/Code/WebProjectsAndTests/NFL_Hall_Of_Fame_Predictor"
+		},
+		{
+			"path": "/Users/danielarcese/Desktop/Code/WebProjectsAndTests/Dude-Blogs"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"liveServer.settings.multiRootWorkspaceName": "Dude-Blogs"
+	}
+}
