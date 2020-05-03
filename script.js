@@ -2,7 +2,7 @@
 //// CREATING DATALIST INPUT OPTIONS FOR THE SEARCH BY PLAYER INPUT
 // Get the <datalist> and <input> elements.
 var dataList = document.getElementById("player-list-input");
-var input = document.getElementById("player-input");
+var input = document.getElementById("player-input-name");
 
 // Create a new XMLHttpRequest.
 var request = new XMLHttpRequest();
@@ -26,6 +26,7 @@ request.onreadystatechange = function(response) {
 
       // Update the placeholder text.
       input.placeholder = "player first & last name";
+      
     } else {
       // An error occured :(
       input.placeholder = "Couldn't load datalist options :(";
@@ -37,11 +38,11 @@ request.onreadystatechange = function(response) {
 input.placeholder = "Loading options...";
 
 // Set up and make the request.
-request.open('GET', 'Scraping/full_player_list.json', true);
+request.open('GET', 'Scraping/player_list.json', true);
 request.send();
 
-// START THE page with the focus on the player-input
-document.getElementById("player-input").focus();
+// START THE page with the focus on the player-input-name
+document.getElementById("player-input-name").focus();
 //////////////////////////////////////////////////////////////////
 
 
@@ -50,35 +51,89 @@ function goButtonClick(){
     console.log("hi");
 }
 //////////////////////////////////////////
-
+var currentSelection = undefined;
 // DEALING WITH SWITCHES FROM CHANGES IN BY PREDICTING BY NAME OR BY ENTERING STATS
 function searchTypeChange(e){
   let playerName = "Player Name".toUpperCase();
+  currentSelection = e.target.getAttribute('id');
   e.target.innerText.toUpperCase() === playerName ? 
-  (document.getElementById("statsButton").style="border-color:rgb(235, 221, 159); background-color: rgb(235, 221, 159); color= rgba(0,0,0,1);",
-  document.getElementById("playerNameButton").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color= rgba(0,0,0,1);",
-  document.getElementById("search-by-player-container").style.visibility = "visible",
-  document.getElementById("player-input").focus(), 
-  document.getElementById("search-by-stats-container").style.visibility= "hidden",
+  
+  (
+  console.log("playername button selected"),
+  
+  document.getElementById("search-by-stats-container").style.display= "none",
+    //document.getElementById("statsButton").style="border-color:rgb(235, 221, 159); background-color: rgb(235, 221, 159); color= rgba(0,0,0,1);",
+  //document.getElementById("playerNameButton").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color= rgba(0,0,0,1);",
+  document.getElementById("search-by-player-container").style.display = "flex",
+  document.getElementById("search-by-player-container").style.flexDirection = "column",
+  document.getElementById("search-by-player-container").style.justifyContent = "center",
+  document.getElementById("search-by-player-container").style.alignItems = "center",
+  document.getElementById("search-by-player-container").style.margin = "2rem",
+  document.getElementById("playerNameButton1").style.borderColor = "rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48)",
+  document.getElementById("playerNameButton1").style.color = "rgb(247, 184, 48)",
+  document.getElementById("playerNameButton1").style.borderStyle = "solid",
+  
+  document.getElementById("statsButton1").style.borderColor = "rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80)",
+  document.getElementById("statsButton1").style.color = "rgb(67, 15, 80)",
+  document.getElementById("statsButton1").style.borderStyle = "solid",
+  
+  
+  document.getElementById("player-input-name").focus(), 
+  
+ 
   playerNameCheck()
   ): 
-  (document.getElementById("statsButton").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color= rgba(0,0,0,1);",
-  document.getElementById("playerNameButton").style="border-color:rgb(235, 221, 159); background-color: rgb(235, 221, 159)",
-  changePredictByStatsTable(),
-  document.getElementById("search-by-player-container").style.visibility = "hidden",
-  document.getElementById("search-by-stats-container").style.visibility= "visible"
+  (
+    //document.getElementById("statsButton").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color= rgba(0,0,0,1);",
+  //document.getElementById("playerNameButton").style="border-color:rgb(235, 221, 159); background-color: rgb(235, 221, 159)",
+  
+  document.getElementById("search-by-player-container").style.display = "none",
+  document.getElementById("search-by-stats-container").style.display= "flex",
+
+  document.getElementById("statsButton1").style.borderColor = "rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48)",
+  document.getElementById("statsButton1").style.color = "rgb(247, 184, 48)",
+  document.getElementById("statsButton1").style.borderStyle = "solid",
+  
+  document.getElementById("playerNameButton1").style.borderColor = "rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80)",
+  document.getElementById("playerNameButton1").style.color = "rgb(67, 15, 80)",
+  document.getElementById("playerNameButton1").style.borderStyle = "solid",
+  document.getElementById("playerNameButton1").borderStyle = "solid",
+  changePredictByStatsTable()
   );
 }
 // ASSOCIATED EVENT LISTENTER
-document.getElementById("playerNameButton").addEventListener('click', searchTypeChange, false);
-document.getElementById("statsButton").addEventListener('click', searchTypeChange, false);
+document.getElementById("playerNameButton1").addEventListener('click', searchTypeChange, false);
+document.getElementById("statsButton1").addEventListener('click', searchTypeChange, false);
+
 //////////////////////////////////////////////////////////////////////////////////
 
+//document.getElementById("statsButton1").addEventListener('hover', makeButtonAppearActive, false);
+document.getElementById("statsButton1").addEventListener('mouseover', makeButtonAppearActive, false);
+document.getElementById("statsButton1").addEventListener('mouseout', makeButtonAppearInactive, false);
+document.getElementById("playerNameButton1").addEventListener('mouseover', makeButtonAppearActive, false);
+document.getElementById("playerNameButton1").addEventListener('mouseout', makeButtonAppearInactive, false);
+document.getElementById("player-input-name-predict").addEventListener('mouseover', makeButtonAppearActive, false);
+document.getElementById("player-input-name-predict").addEventListener('mouseout', makeButtonAppearInactive, false);
+
+function  makeButtonAppearActive(){
+  
+  this.style.borderColor = "rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48)",
+  this.style.color = "rgb(247, 184, 48)",
+  this.style.borderStyle = "solid"
+}
+
+function makeButtonAppearInactive(){
+  if(currentSelection !== this.id){
+    this.style.borderColor = "rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80)",
+    this.style.color = "rgb(67, 15, 80)",
+    this.style.borderStyle = "solid"
+  };
+}
 
 
 
 function playerNameCheck(){
-  let player_input_value = document.getElementById("player-input").value.replace(/ /gi, "").toUpperCase();
+  let player_input_value = document.getElementById("player-input-name").value.replace(/ /gi, "").toUpperCase();
   let player_list = document.getElementById("player-list-input");
   let i = 0;
   let input_valid = false;
@@ -97,18 +152,23 @@ function playerNameCheck(){
 function PredictByNameReady(input_valid){
   if (input_valid === true){
     console.log("input valid");
-    document.getElementById("go-button").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color: rgba(0,0,0,1);";
+    document.getElementById("player-input-name").style.color= "rgb(247, 184, 48)";
+    document.getElementById("player-input-name-predict").style.display="block";
+   // document.getElementById("go-button").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color: rgba(0,0,0,1);";
   }
   else{
     console.log("input not valid");
+    
+    document.getElementById("player-input-name-predict").style.display="none";
     document.getElementById("go-button").style.borderColor="";
     document.getElementById("go-button").style.backgroundColor="";
     document.getElementById("go-button").style.color="grey";
+    document.getElementById("player-input-name").style.color= "rgb(67, 15, 80)" ;
     "border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color= rgba(0,0,0,1);";
   }
 }
 
-document.getElementById("player-input").addEventListener('input', playerNameCheck, false);
+document.getElementById("player-input-name").addEventListener('input', playerNameCheck, false);
 //document.getElementById("player-list-input").addEventListener('input', playerNameCheck, false);
 
 ///////////////////////////////////
@@ -131,37 +191,35 @@ function modifyText(new_text) {
   }
 
 function changePredictByStatsTable(){
+ 
   deletePositionRelatedRows();
+  document.getElementById("search-by-stats-container").style.display = "flex";
+  document.getElementById("search-by-stats-container").style.alignItems = "center";
+  document.getElementById("search-by-stats-container").style.justifyContent = "center";
+  document.getElementById("search-by-stats-container").style.margin = "auto";
+  document.getElementById("search-by-stats-container").style.marginTop = "2rem";
+  document.getElementById("predict-by-stats-table").insertRow(-1);
+     
   console.log(document.getElementById("position-select").value);
-  switch (document.getElementById("position-select").value) {
-    case 'QB':
-      console.log('Oranges are $0.59 a pound.');
-      break;
-    case 'Mangoes':
-    case 'WR':
-        let table = document.getElementById("predict-by-stats-table");
-        document.getElementById("predict-by-stats-table").insertRow(-1);
-        let row =  table.rows.item(table.rows.length-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = "STAT 1";
-        cell2.innerHTML = '<input type="number" id="stat1Input" name="tentacles" \
-        min="0" max="10000" step="10">';
-        document.getElementById("predict-by-stats-table").insertRow(-1);      
-        var cell1 = table.rows.item(table.rows.length-1).insertCell(0);
-        var cell2 = table.rows.item(table.rows.length-1).insertCell(1);
-        cell1.innerHTML = "STAT 2";
-        cell2.innerHTML = '<input type="number" id="stat2Input" name="tentacles" \
-        min="0" max="10000">';
-        console.log('Mangoes and papayas are $2.79 a pound.');
-      // expected output: "Mangoes and papayas are $2.79 a pound."
-      function addWRRows(){
-      }
-      break;
-    default:     
+  if (document.getElementById("position-select").value !=="POS VALUE") {
+    let stats = ['TotalYears',  'MVP', 'ProBowls', 'AllPro', 'SbChamp', 'APpoy'];
+    let table = document.getElementById("predict-by-stats-table");
+    stats.forEach(element => {
+      table.insertRow(-1);
+      let row =  table.rows.item(table.rows.length-1);
+      let cell1 = row.insertCell(0);
+      let cell2 = row.insertCell(1);
+      cell1.innerHTML = element;
+      cell2.innerHTML = '<input type="number" ' + ' id=' + element +' name=' + element +' \
+min="0" max="50" step="1">';
+
+      
+    });
+  } else{
+    
   }
 }
-
+  
 function deletePositionRelatedRows(){
   while ( document.getElementById("predict-by-stats-table").rows.length > 1) {
     document.getElementById("predict-by-stats-table").deleteRow(-1);
@@ -182,4 +240,56 @@ for ( var i = 0; i < searchByDivChildren.length; i++) {
   }
 
 
+
+  ///////////////////api testing only
+
+  // <input type="text" id="api-test-input-text"></input>
+  //<button type="submit" id="api-test-submit-button"></button>
+// [ TotalYears[index],\
+//MVP[index], \
+//ProBowl[index], \
+//AllPro[index], \
+//SbChamp[index], \
+//APpoy[index] \
+//] for index, element in  enumerate(TotalYears)]
+
+
+function sendInputToApi(){
+  var inputToApi = document.getElementById("api-test-input-text");
+  var ApiValuesAsArray = inputToApi.value.split(',');
+  let stats = ['TotalYears',  'MVP', 'ProBowls', 'AllPro', 'SbChamp', 'APpoy'];
+ 
   
+  var ApiObject = {};
+  stats.forEach(element => { ApiObject[element] = document.getElementById(element).value || 0;} );
+  // var ApiObject = {
+  //                 Position: ApiValuesAsArray[0].toUpperCase() || 'QB',
+  //                 TotalYears: ApiValuesAsArray[1] || 0,
+  //                 MVP: ApiValuesAsArray[2] || 0 ,
+  //                 ProBowl: ApiValuesAsArray[3] || 0,
+  //                 AllPro: ApiValuesAsArray[4] || 0,
+  //                 SbChamp: ApiValuesAsArray[5] || 0,
+  //                 APpoy: ApiValuesAsArray[6] || 0,
+  //                 };
+  ApiObject = JSON.stringify(ApiObject);
+
+  var req = new XMLHttpRequest();   // new HttpRequest instance 
+  req.open("POST", 'http://127.0.0.1:5000/api/inputs', true); //make this False later to try synchronous version
+  req.setRequestHeader("Content-Type", "application/json"); //might not be necessary for now
+  req.send(ApiObject);
+
+  req.onreadystatechange = function(response) {
+    if (req.readyState === 4) {
+      if (req.status === 200) {
+        // Parse the JSON
+        
+      document.getElementById("api-test-response-label").innerHTML =   req.responseText;
+      }
+    }
+  };
+  
+  //////////let ApiObject1 = document.getElementById("position-select").value
+
+}
+  
+document.getElementById("api-test-submit-button").addEventListener('click', sendInputToApi, false);
