@@ -12,25 +12,31 @@ import json
 import re
 import time
 
+sleepNumber = 0
 
-os.chdir("positionCSVs")
+
+os.chdir("positionCSVsCurrentInclusive")
+# reminder that positionCSVs already don't include players who are still active
+# or last played more recent than 2015 since they wouldnt be elligible for the hall of fame
 
 old_file_names = []
 new_file_names = []
 countedSameLineAccolades = ["MVP","Pro Bowl","All-Pro","SB Champ"]
 
-#for each file
+#for each filequit
 for file in glob.glob("*.csv"):
     old_file_names.append(file)
 
 os.chdir("..")
 try:
-    os.mkdir("positionCSVsWithAccolades")
+    os.mkdir("positionCSVsWithAccoladesCurrentInclusive")
+#''OSerror when already made
 except OSError:
     print(OSError)
 
 
-os.chdir("positionCSVsWithAccolades")
+os.chdir("positionCSVsWithAccoladesCurrentInclusive")
+    
 
 #get old files to create new file names based on the old ones
 for file in old_file_names:
@@ -48,9 +54,10 @@ for file in new_file_names:
 
 
 for idx,val in enumerate(old_file_names):
-    os.chdir("../positionCSVs")
+    # reminder that 
+    os.chdir("../positionCSVsCurrentInclusive")
 
-    with open(val) as csvfile:
+    with open(val, 'r') as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')   
         arrayToHoldAllPlayersAtAPositionInfoForNewCSVs = []     
         #skip  column names
@@ -64,10 +71,30 @@ for idx,val in enumerate(old_file_names):
             arrayToHoldSinglePlayerInfo = row
             #use html column to go to their page
             #check if they have the bling tag
-            url = "https://www.pro-football-reference.com/players" + arrayToHoldSinglePlayerInfo[1]
-            response = requests.get(url, timeout=5)
-            content = BeautifulSoup(response.content, "html.parser")
-            time.sleep(2.5)
+            
+            # maybe this gives there server more chance to breathe?
+            sleepNumber +=1
+            if sleepNumber % 20 == 0:
+                time.sleep(5)
+                sleepNumber = 0
+            
+            # incase you get a timeout
+            try:
+                url = "https://www.pro-football-reference.com/players" + arrayToHoldSinglePlayerInfo[1]
+                response = requests.get(url, timeout=5)
+                content = BeautifulSoup(response.content, "html.parser")
+            except:
+                try:
+                    url = "https://www.pro-football-reference.com/players" + arrayToHoldSinglePlayerInfo[1]
+                    response = requests.get(url, timeout=5)
+                    content = BeautifulSoup(response.content, "html.parser")
+                except:
+                     f = open("urlFailures.txt", "a")
+                     f.write("https://www.pro-football-reference.com/players" + arrayToHoldSinglePlayerInfo[1] + "\n")
+                     f.close()
+                    
+
+            #time.sleep(2.5)
             backNumber = 4
 
 
@@ -90,22 +117,27 @@ for idx,val in enumerate(old_file_names):
                 #line below is just for AP Off. Poy and Def. Poy
                 arrayToHoldSinglePlayerInfo.append(0)
              
-            #add single player info to the array holding all players at a position   
+            #add single player info to the array holding all players at a position 
+            print("arrayToHoldSinglePlayerInfo")  
+            print(arrayToHoldSinglePlayerInfo)
             arrayToHoldAllPlayersAtAPositionInfoForNewCSVs.append(arrayToHoldSinglePlayerInfo)
         csvfile.close() 
 
         
-    os.chdir("../positionCSVsWithAccolades")
-    with open(new_file_names[idx]) as csvWriteFile:
+    os.chdir("../positionCSVsWithAccoladesCurrentInclusive")
+    with open(new_file_names[idx], 'w') as csvWriteFile:
         spamwriter = csv.writer(csvWriteFile, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-        headerColumn = [column for column in columnNames]
-        headerColumn += countedSameLineAccolades + ["AP PoY"]
+     
+        headerColumn =  ['Name','URL','Position','HallOfFame','TotalYears','LastYear','Active',"MVP","Pro Bowl","All-Pro","SB Champ","AP PoY"]
         print(headerColumn)
         spamwriter.writerow(headerColumn)
+       
         for row in arrayToHoldAllPlayersAtAPositionInfoForNewCSVs:
+            print("written row")
+            print(row)
             spamwriter.writerow(row)
-            csvWritefile.close()
+        csvWriteFile.close()
 
      

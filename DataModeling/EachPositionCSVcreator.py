@@ -16,6 +16,7 @@ with open('/Users/danielarcese/Desktop/Code/WebProjectsAndTests/NFL_Hall_Of_Fame
             if position not in allPositions and len(position)> 0:
                 allPositions.append(position)
 
+
 for EachPosition in allPositions:
     print(EachPosition)
     #DataModeling/positionCSVs/T.csv
@@ -36,7 +37,7 @@ for EachPosition in allPositions:
                     position1 = NowPositions.replace('position:"','').replace('\\n',"").replace('"','')
                     if position1 == EachPosition:
                         try:
-                            if int(row[6].replace('last year:','')) < 2015:
+                            if int(row[6].replace('last year:','')) < 2015: #modern inclusive verion comments this line out
 
                                 spamwriter.writerow([row[1].replace('\\n',"").replace('name:','')[1:-1],
                                 row[2][5:-1],
@@ -51,7 +52,8 @@ for EachPosition in allPositions:
                                 )
                                 # last year is index 7
                         except:
-                             if int(row[7].replace('last year:','')) < 2015:
+
+                            if int(row[7].replace('last year:','')) < 2015: #modern inclusive version comments this line out
                                 # work around for 5 olineman with a comma , in between positions like G, T ie
                                 # '{"_id":{"$oid":"5e198f2757d6d0dad8ec2091"}', 'name:"Desmond Wynn"', 'url:"/W/WynnDe01.htm"', 'position:"G', 'T"', 'hall of fame:false', 'first year:2012', 'last year:2012'
                                 print(row)

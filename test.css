@@ -1,0 +1,9 @@
+input[type="text"]:focus{
+    -moz-appearance: textfield;
+    margin:0;
+  }
+    
+  input[type="text"]:focus{
+    -webkit-appearance: none;
+    margin:0;
+  }

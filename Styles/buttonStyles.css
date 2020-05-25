@@ -1,0 +1,56 @@
+
+button{
+    border-radius: 2em / 2em; 
+    position: relative;
+    top: 1em;
+    background-color: transparent;
+  }
+
+.select-search-type-buttons-container button{
+    background-color: transparent;
+    padding:1rem;
+    margin:1rem;
+    font-size: 2rem;
+    font-family: 'Roboto Slab', serif;
+    color: rgb(67, 15, 80); 
+    border-width: 0.5rem;
+    border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
+    transition: 0.6s;
+    background-color: rgba(247, 184, 48, 0.5);
+  }
+  
+  #player-input-name-predict , #player-input-stats-predict{
+    background-color: transparent;
+    padding:1rem;
+    margin:1rem;
+    font-size: 2rem;
+    font-family: 'Roboto Slab', serif;
+    color: rgb(67, 15, 80); 
+    border-width: 0.5rem;
+    border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
+    transition: 0.6s;
+  }
+  
+  #player-input-name-predict:focus, #player-input-stats-predict:focus{
+    text-decoration: none;
+    outline: none;
+    border-style: solid;
+  }
+  
+  .select-search-type-buttons-container button:focus{
+    text-decoration: none;
+    outline: none;
+    border-style: solid;
+  }
+  
+  .select-search-type-buttons-container button:hover{
+    border-color:rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48);
+    color:rgb(247, 184, 48);
+    border-style:solid;
+  }
+  
+  .select-search-type-buttons-container button:active{
+    border-color:rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48);
+    color:rgb(247, 184, 48);
+    border-style:solid;
+  }

@@ -1,53 +1,22 @@
 
-body {
-  /*background-image  : -webkit-gradient(linear, left top, left bottom, from(#274494), to(#427db4));
-  background-image: linear-gradient(#427db4, #274494); */
-  background-image: url("images/andrew-mcelroy-XaGNO7bgZa8-unsplash.jpg");
-  background-size: cover;
-  height: 100%;
-  margin: 0em;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+
+
+
+
+
+
+
+
+
+
+
+input:focus{
+  text-decoration: none;
+  outline: none;
+  border-style: solid;
 }
 
-.informative-text-centered-title{
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  align-items: center;
-  font-family: 'Roboto Slab', serif;
-  font-size: 3em;
-  color:rgb(67, 15, 80);
-  margin-bottom: -2rem;
-}
-
-.select-search-type-buttons-container{
-    display:flex;
-    align-items: center;
-    justify-content: center; 
-}
-
-.select-search-type-buttons-container div{
-  margin:0.5rem;
-}
-
-
-
-.informative-text-centered{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Roboto Slab', serif;
-  font-size: 3em;
-  color:rgb(247, 184, 48);
-  margin-bottom: -2rem;
-}
-
-#search-by-player-container {
- display:none;
-}
-
-.select-search-type-buttons-container button{
+input{
   background-color: transparent;
   padding:1rem;
   margin:1rem;
@@ -57,79 +26,14 @@ body {
   border-width: 0.5rem;
   border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
   transition: 0.6s;
+  border-radius: 3rem;
+  height:3rem;
 }
 
-#player-input-name-predict {
-  background-color: transparent;
-  padding:1rem;
-  margin:1rem;
-  font-size: 2rem;
-  font-family: 'Roboto Slab', serif;
-  color: rgb(67, 15, 80); 
-  border-width: 0.5rem;
-  border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
-  transition: 0.6s;
-}
-
-#player-input-name-predict:focus{
-  text-decoration: none;
-  outline: none;
-  border-style: solid;
-}
-
-.select-search-type-buttons-container button:focus{
-  text-decoration: none;
-  outline: none;
-  border-style: solid;
-}
-
-.select-search-type-buttons-container button:hover{
-  border-color:rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48);
-  color:rgb(247, 184, 48);
-  border-style:solid;
-}
-
-.select-search-type-buttons-container button:active{
-  border-color:rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48);
-  color:rgb(247, 184, 48);
-  border-style:solid;
-}
-
-#search-by-player-container{
- display:none;
-}
-
-#search-by-stats-container{
-  
-}
-
-
-
-
-
-
-table,
-td {
-    border: 1px solid #333;
-}
-
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
-}
-
-
-button{
-  border-radius: 2em / 2em; 
-  position: relative;
-  top: 1em;
-  background-color: transparent;
-
-}
-
-input {
-  text-align: center
+select{
+  text-align-last: center;
+  align-content: center;
+  justify-content: center;
 }
 
 
@@ -169,37 +73,38 @@ input {
    
   display: none;
 }
-#player-input-name{
-  color:rgb(67, 15, 80);
-  font-size: 1.4rem;
-  width: 20rem;
-  background-color: rgba(83, 83, 83, 0.6);
 
-} 
 
-#go-button{
-  color:grey;
+
+/*
+#player-input-name:hover {
+  -moz-appearance: textfield;
 }
 
-#player-input-name::-webkit-input-placeholder {
-  font-family: 'Roboto Slab', serif;
-  color: rgb(67, 15, 80); 
+#player-input-name:-webkit-outer-spin-button,
+#player-input-name:active:-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-#player-input-name:-ms-input-placeholder {
-  font-family: 'Roboto Slab', serif;
-  color: rgb(67, 15, 80); 
+
+#player-input-name:active {
+  -moz-appearance: textfield;
 }
 
-#player-input-name:-moz-placeholder {
-  font-family: 'Roboto Slab', serif;
-  color: rgb(67, 15, 80); 
+
+#player-input-name:focus::-webkit-outer-spin-button,
+#player-input-name:focus:-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-#player-input-name::-moz-placeholder {
-  font-family: 'Roboto Slab', serif;
-  color: rgb(67, 15, 80); 
+
+#player-input-name:focus {
+  -moz-appearance: textfield;
 }
+*/
+/*.form input:focus::-webkit-input-placeholder, .form textarea:focus::-webkit-input-placeholder */
 /*
 .top-grid-container {
   -ms-grid-row: 1;

@@ -17,7 +17,6 @@ LB = ["ILB", "LB", "OLB"]
 K = ["K"]
 P = ["P"]
 QB = ["QB"]
-
 positionGroupsDict = dict(OL=OL, DB=DB , DE=DE, FB=FB, WR=WR, DT=DT, RB=RB, TE=TE, LB=LB, K=K, P=P, QB=QB)
 
 # this function returns an array of the form [[inputsArrays], outputsArray]
@@ -83,7 +82,7 @@ def getTrainedSVM(inputsArray, outputsArray):
   
 def createAndSaveModels(positionGroupsDict,csvFilePathForGetPlayerStatsAsArray, fileEndingStringForGetPlayerStatsAsArray , savePathForModels):
     try:
-       from joblib import dump, load
+       from joblib import dump
        import glob, os 
        from os import path   
     except:

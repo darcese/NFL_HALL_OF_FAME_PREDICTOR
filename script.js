@@ -76,6 +76,7 @@ function searchTypeChange(e){
   document.getElementById("statsButton1").style.borderColor = "rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80)",
   document.getElementById("statsButton1").style.color = "rgb(67, 15, 80)",
   document.getElementById("statsButton1").style.borderStyle = "solid",
+  document.getElementById("statsButton1").style.backgroundColor = "rgba(67, 15, 80, 0.5)",
   
   
   document.getElementById("player-input-name").focus(), 
@@ -96,6 +97,7 @@ function searchTypeChange(e){
   
   document.getElementById("playerNameButton1").style.borderColor = "rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80)",
   document.getElementById("playerNameButton1").style.color = "rgb(67, 15, 80)",
+  document.getElementById("playerNameButton1").style.backgroundColor = "rgba(67, 15, 80, 0.5)",
   document.getElementById("playerNameButton1").style.borderStyle = "solid",
   document.getElementById("playerNameButton1").borderStyle = "solid",
   changePredictByStatsTable()
@@ -119,14 +121,16 @@ function  makeButtonAppearActive(){
   
   this.style.borderColor = "rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48) rgb(247, 184, 48)",
   this.style.color = "rgb(247, 184, 48)",
-  this.style.borderStyle = "solid"
+  this.style.borderStyle = "solid",
+  this.style.backgroundColor= "rgba(67, 15, 80,0.5)";
 }
 
 function makeButtonAppearInactive(){
   if(currentSelection !== this.id){
     this.style.borderColor = "rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80) rgb(67, 15, 80)",
     this.style.color = "rgb(67, 15, 80)",
-    this.style.borderStyle = "solid"
+    this.style.borderStyle = "solid",
+    this.style.backgroundColor= "rgba(247, 184, 48, 0.5)";
   };
 }
 
@@ -149,11 +153,15 @@ function playerNameCheck(){
   PredictByNameReady(input_valid);
 }
 
+
 function PredictByNameReady(input_valid){
   if (input_valid === true){
     console.log("input valid");
     document.getElementById("player-input-name").style.color= "rgb(247, 184, 48)";
-    document.getElementById("player-input-name-predict").style.display="block";
+    document.getElementById("player-input-name").style.borderColor= "rgb(247, 184, 48)";
+    document.getElementById("player-input-name").style.backgroundColor= "rgba(67, 15, 80,0.5)";
+
+    document.getElementById("player-input-name-predict").style.display="flex";
    // document.getElementById("go-button").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color: rgba(0,0,0,1);";
   }
   else{
@@ -164,6 +172,9 @@ function PredictByNameReady(input_valid){
     document.getElementById("go-button").style.backgroundColor="";
     document.getElementById("go-button").style.color="grey";
     document.getElementById("player-input-name").style.color= "rgb(67, 15, 80)" ;
+    document.getElementById("player-input-name").style.borderColor= "rgb(67, 15, 80)";
+    document.getElementById("player-input-name").style.backgroundColor= "rgba(247, 184, 48, 0.5)";
+
     "border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color= rgba(0,0,0,1);";
   }
 }
@@ -293,3 +304,6 @@ function sendInputToApi(){
 }
   
 document.getElementById("api-test-submit-button").addEventListener('click', sendInputToApi, false);
+document.getElementById("player-input-name").addEventListener('focus', (event) => {
+  document.getElementById("player-input-name").style.color= 'pink';    
+});
