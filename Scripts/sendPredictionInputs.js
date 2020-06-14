@@ -27,7 +27,8 @@ function sendInputToApi(){
     ApiObject = JSON.stringify(ApiObject);
   
     var req = new XMLHttpRequest();   // new HttpRequest instance 
-    req.open("POST", 'http://127.0.0.1:5000/api/inputs_as_stats/generate_prediction', true); //make this False later to try synchronous version
+
+    req.open("POST", 'https://nfl-hall-of-fame-predictor-api.herokuapp.com/api/inputs_as_stats/generate_prediction', true); //make this False later to try synchronous version
     req.setRequestHeader("Content-Type", "application/json"); //might not be necessary for now
     req.send(ApiObject);
   
