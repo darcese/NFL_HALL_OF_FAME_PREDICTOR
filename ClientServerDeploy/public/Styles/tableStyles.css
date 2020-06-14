@@ -1,0 +1,89 @@
+table{
+  
+}
+td,
+th {
+    border:none;
+    border-radius: 0rem;
+    color: rgb(247, 184, 48);
+    background-color: rgba(83, 83, 83, 0.0);
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+thead,
+tfoot {
+    margin:0px;
+    padding: 0px;
+    border:none;
+    background-color: rgba(83, 83, 83, 0.0);
+    color: rgb(247, 184, 48);
+}
+
+#predict-by-stats-table thead, tfoot, td, th, tr{
+    border:none;
+    padding:none;
+    margin:none;
+    border-color: rgba(83, 83, 83, 0.2);
+    border-spacing:0px;
+    
+    font-family: 'Roboto Slab', serif;
+    color: rgb(247, 184, 48);     
+}
+
+@media (max-width:550){
+    table{
+        margin-left:20px;
+        width: 90%;
+    }
+    td
+    {
+        border:none;
+        border-radius: 0rem;
+        color: rgb(247, 184, 48);
+        background-color: rgba(83, 83, 83, 0.0);
+        text-align: right;
+        padding: 10px;
+        width: 30%;
+        font-size: 1.2rem;
+        
+        
+    }
+    
+    th {
+        border:none;
+        border-radius: 0rem;
+        color: rgb(247, 184, 48);
+        background-color: rgba(83, 83, 83, 0.0);
+        text-align: center;
+        padding: 20px;
+        margin-left: 10px;
+        
+    }
+    
+    thead,
+    tfoot {
+        margin:0px;
+        padding: 0px;
+        border:none;
+        background-color: rgba(83, 83, 83, 0.0);
+        color: rgb(247, 184, 48);
+    }
+    
+    #predict-by-stats-table thead, tfoot, td, th, tr{
+        border:none;
+        padding:none;
+        margin:none;
+        border-color: rgba(83, 83, 83, 0.2);
+        border-spacing:0px;
+        
+        font-family: 'Roboto Slab', serif;
+        color: rgb(247, 184, 48);     
+    } 
+
+    .statInput {
+        margin-left: -2rem;
+    }
+}
