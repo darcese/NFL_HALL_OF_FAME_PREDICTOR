@@ -1,0 +1,173 @@
+
+input {
+    text-align: center;
+  }
+  
+  
+  input:focus{
+    text-decoration: none;
+    outline: none;
+    border-style: solid;
+    border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
+  }
+  
+  input{
+    background-color: transparent;
+    padding:1rem;
+    margin:1rem;
+    font-size: 2rem;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+    color:rgb(247, 184, 48);
+    border-width: 0.5rem;
+    border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
+    transition: 0.6s;
+    border-radius: 3rem;
+    height:3rem;
+    border-style: solid;
+    width:100px;
+  }  
+
+select option{
+ background-color: rgb(67, 15, 80);
+ text-align: center;
+ text-align-last: center;
+ -moz-text-align-last: center;
+}
+
+  select{
+    background-color: transparent;
+    padding:0.5rem;
+    margin:1rem;
+    font-size: 2rem;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5em;
+    color:rgb(247, 184, 48);
+    border-width: 0.5rem;
+    border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
+    transition: 0.6s;
+    border-radius: 3rem;
+    height:3rem;
+    border-style: solid;
+    width:275px;
+    height: 80px;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+  }
+
+  #player-input-name{
+    color:rgb(67, 15, 80);
+    font-size: 1.4rem;
+    width: 20rem;
+    background-color: rgba(247, 184, 48,0.5);
+    border-radius: 3rem;
+    height: 3rem;
+    transition: 0.5s;
+    border-style: solid;
+  } 
+
+
+  @media (max-width: 550px) {
+   
+    .statInput{
+      width: 40px;
+      font-size:1.4rem;
+    }
+
+    #position-select{
+      font-size:1.4rem;
+      width: 140px;
+      text-align: center;
+    }
+
+    #player-input-name{
+      margin-top: -20px;
+      color:rgb(67, 15, 80);
+      font-size: 1.2rem;
+      text-align: center;
+      width: 80%;
+      padding-left:1rem;
+      background-color: rgba(247, 184, 48,0.5);
+      border-radius: 2.5rem;
+      height: 3rem;
+      transition: 0.5s;
+      border-style: solid;
+    } 
+
+  
+  
+        
+      }
+
+  #position-select{
+    
+      text-align: -webkit-auto;
+      padding-left: 45px;
+  
+  }
+  
+  #player-input-name:focus{
+    border-style: solid;
+  } 
+  
+  #player-input-name:active{
+    border-style: solid;
+  } 
+  
+  
+  
+  #go-button{
+    color:grey;
+  }
+  
+  #player-input-name::-webkit-input-placeholder {
+    font-family: 'Roboto Slab', serif;
+    color: rgb(67, 15, 80); 
+  }
+  
+  #player-input-name:-ms-input-placeholder {
+    font-family: 'Roboto Slab', serif;
+    color: rgb(67, 15, 80); 
+  }
+  
+  #player-input-name:-moz-placeholder {
+    font-family: 'Roboto Slab', serif;
+    color: rgb(67, 15, 80); 
+  }
+  
+  #player-input-name:focus{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  #player-input-name:hover{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  
+  
+  input[type="text"]:hover {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    margin: 0;
+    -ms-appearance: textfield;
+  }
+  
+  input[type="text"]:focus{
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    margin: 0;
+    -ms-appearance: textfield;
+  }
+  
+  #player-input-name:hover::-webkit-outer-spin-button,
+  #player-input-name:hover::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
