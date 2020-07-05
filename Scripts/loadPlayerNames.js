@@ -3,6 +3,10 @@ var dataList = document.getElementById("player-list-input");
 // Create a new XMLHttpRequest.
 var request = new XMLHttpRequest();
 
+
+// TODO CHECK IF PLAYER HAS A REPEAT NAME IF SO APPEND POSITION YEAR START
+
+
 // Handle state changes for the request.
 request.onreadystatechange = function(response) {
   if (request.readyState === 4) {
