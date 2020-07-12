@@ -24,27 +24,55 @@ request.onreadystatechange = function(response) {
         // "first year": 1992,
         // "last year": 1998,
         // "active": false
-        
-        playersArray.push(item.name);
+      
+        playersArray.push(item);
         // to check if two players have same name
-        if( 0 < index < array.length - 1){
-          if(item.name === array[index - 1].name){
-            playersArray[index - 1] = array[index - 1].name + " " + array[index - 1].position + " " + array[index - 1]["first year"];
-            playersArray[index] = array[index].name + " " + array[index].position + " " + array[index]["first year"];
-          }
-          if(item.name === array[index + 1].name){
-            playersArray[index + 1] = array[index + 1].name + " " + array[index + 1].position + " " + array[index + 1]["first year"];
-            playersArray[index] = array[index].name + " " + array[index].position + " " + array[index]["first year"];
+      //   if( 0 < index < array.length - 1){
+      //     if(item.name === array[index - 1].name){
+      //       playersArray[index - 1] = array[index - 1].name + " " + array[index - 1].position + " " + array[index - 1]["first year"];
+      //       playersArray[index] = array[index].name + " " + array[index].position + " " + array[index]["first year"];
+      //     }
+      //     if(item.name === array[index + 1].name){
+      //       playersArray[index + 1] = array[index + 1].name + " " + array[index + 1].position + " " + array[index + 1]["first year"];
+      //       playersArray[index] = array[index].name + " " + array[index].position + " " + array[index]["first year"];
+      //     }
+      //   }
+      // });
+      });
+      // add player names to option list
+      playersArray.forEach(function(item, index, array){
+        var option = document.createElement('option');
+        option.value = item.name;
+        //console.log(array[100].name);
+        // clean this shit up later
+        if ( 0 < index  && index <  array.length - 2){       
+          if(item.name === array[index-1].name ||  item.name === array[index+1].name ){
+            option.value +=  ` ${item.position} ${item['first year']}-${item.active ? 'Active': item['last year']}`;
           }
         }
-      });
-
-      // add player names to option list
-      playersArray.forEach(function(item){
-        var option = document.createElement('option');
-        option.value = 'poop';
+        if(index === 0){
+          if(item.name === array[index+1].name ){
+            option.label +=  ` ${item.position} ${item['first year']}-${item.active ? 'Active': item['last year']}`;
+          }
+        }
+        if(index === array.length - 1){
+          if(item.name === array[index-1].name ){
+            option.label +=  `${item.position} ${item['first year']}-${item.active ? 'Active': item['last year']}`;
+          }
+        }
+        // {`${isGoogleSignIn ? 'google-sign-in': ''} custom-button`}
+  
+        // option.label= "LABEL" + index.toString();
+        // // if(item.name.startsWith("A")){
+        // //   option.value= "This is the Value"
+        // // }
+        // // else{
+        // //   option.
+        // // }
+        // option.value = "VALUE" +index.toString();
+        
         dataList.appendChild(option);
-      })      
+      });      
 
       // Update the placeholder text.
       input.placeholder = "player first & last name";
