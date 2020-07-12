@@ -92,5 +92,9 @@ function playerNameCheck(){
     
  // document.getElementById("api-test-submit-button").addEventListener('click', sendInputToApi, false);
 
+ var playerNameInput = document.getElementById("player-input-name");
+ playerNameInput.addEventListener('input', function(){
+   console.log(this.value + this.label);
+ });
 
   document.getElementById("player-input-name-predict").addEventListener('click', sendPlayerNameToAPIForPrediction, false);
