@@ -6,6 +6,7 @@ var request = new XMLHttpRequest();
 
 // TODO CHECK IF PLAYER HAS A REPEAT NAME IF SO APPEND POSITION YEAR START
 
+var clientPlayerNametoServerUIDDictionary = {};
 
 // Handle state changes for the request.
 request.onreadystatechange = function(response) {
@@ -20,8 +21,8 @@ request.onreadystatechange = function(response) {
         var option = document.createElement('option');
         // Set the value using the item in the JSON array.
         option.value = item.name;
-        // Add the <option> element to the <datalist>.
         dataList.appendChild(option);
+        clientPlayerNametoServerUIDDictionary[item.name] = item.url;
       });
 
       // Update the placeholder text.

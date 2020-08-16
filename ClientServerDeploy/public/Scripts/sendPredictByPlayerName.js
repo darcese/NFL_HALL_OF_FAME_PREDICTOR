@@ -7,6 +7,7 @@ function playerNameCheck(){
     let input_valid = false;
     while(i < document.getElementById("player-list-input").options.length){
       if (player_input_value === player_list.options[i].value.replace(/ /gi, "").toUpperCase()){
+        document.getElementById("player-input-name").value = player_list.options[i].value;
         input_valid = true;
         break;
       }
@@ -19,9 +20,12 @@ function playerNameCheck(){
   
   
   function PredictByNameReady(input_valid){
-
     document.getElementById("api-test-response-label").innerHTML = "";
     if (input_valid === true){
+      console.log("hi 1 ");
+      console.log(document.getElementById("player-input-name").value);
+      console.log(clientPlayerNametoServerUIDDictionary[document.getElementById("player-input-name").value]);
+      console.log("hi 2 ");
       console.log("input valid");
       document.getElementById("player-input-name").style.color= "rgb(247, 184, 48)";
       document.getElementById("player-input-name").style.borderColor= "rgb(247, 184, 48)";
@@ -32,7 +36,7 @@ function playerNameCheck(){
     }
     else{
       console.log("input not valid");
-      
+
       document.getElementById("player-input-name-predict").style.display="none";
       document.getElementById("player-input-name").style.color= "rgb(67, 15, 80)" ;
       document.getElementById("player-input-name").style.borderColor= "rgb(67, 15, 80)";
@@ -56,7 +60,7 @@ function playerNameCheck(){
    
     
     var ApiObject = {};
-    ApiObject['Name'] = inputToApi.value; 
+    ApiObject['url'] = clientPlayerNametoServerUIDDictionary[inputToApi.value]; 
     // var ApiObject = {
     //                 Position: ApiValuesAsArray[0].toUpperCase() || 'QB',
     //                 TotalYears: ApiValuesAsArray[1] || 0,
