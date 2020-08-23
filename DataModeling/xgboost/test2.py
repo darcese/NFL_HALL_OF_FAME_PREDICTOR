@@ -16,7 +16,8 @@ K = ["K"]
 P = ["P"]
 QB = ["QB"]
 positionGroupsDict = dict(OL=OL, DB=DB , DE=DE, FB=FB, WR=WR, DT=DT, RB=RB, TE=TE, LB=LB, K=K, P=P, QB=QB)
-positionGroupsDFDict = {}
+positionGroupsDFDictTrain = {}
+positionGroupsDFDictTest = {}
 xgboostDataDict = {}
 xgboostLabelsDict = {}
 
@@ -27,10 +28,11 @@ os.chdir('..')
 fakeDFtoGetColumns = pd.read_csv('positionCSVsWithAccolades/B_WithAccolades.csv')
 for positionGroup, positions in positionGroupsDict.items():
     # make the empty dataframe
-    positionGroupsDFDict[positionGroup] = pd.DataFrame(columns=fakeDFtoGetColumns.columns)
+    positionGroupsDFDictTrain[positionGroup] = pd.DataFrame(columns=fakeDFtoGetColumns.columns)
+    positionGroupsDFDictTest[positionGroup] = pd.DataFrame(columns=fakeDFtoGetColumns.columns)
     for position in positions:
-        positionGroupsDFDict[positionGroup] = pd.concat([positionGroupsDFDict[positionGroup], pd.read_csv('positionCSVsWithAccolades/'+ position +'_WithAccolades.csv')])
-
+        positionGroupsDFDictTrain[positionGroup] = pd.concat([positionGroupsDFDictTrain[positionGroup], pd.read_csv('positionCSVsWithAccolades/'+ position +'_WithAccolades.csv')])
+        positionGroupsDFDictTest[positionGroup] = pd.concat([positionGroupsDFDictTest[positionGroup], pd.read_csv('positionCSVsWithAccoladesCurrentInclusiveForTesting/'+ position +'_WithAccolades.csv')])
     #print(positionGroupsDFDict[positionGroup].head(3))
 
     
@@ -38,24 +40,27 @@ for positionGroup, positions in positionGroupsDict.items():
         #print(a)
     # SEE how much of each class there is for each position group,
     print(positionGroup)
-    print(positionGroupsDFDict[positionGroup].HallOfFame.value_counts().to_string())
-    print(positionGroupsDFDict[positionGroup].HallOfFame.mean())
+    print(positionGroupsDFDictTrain[positionGroup].HallOfFame.value_counts().to_string())
+    averageHOFLikelihood = positionGroupsDFDictTrain[positionGroup].HallOfFame.mean()
     print()
 
-    train = positionGroupsDFDict[positionGroup]
+    train = positionGroupsDFDictTrain[positionGroup]
     target = train['HallOfFame']
-    train = train.drop(['Name','URL', 'Position','LastYear' ,'Active'],axis=1)
+    train = train.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
 
-    test = train
-
+    test = positionGroupsDFDictTest[positionGroup]
+    test = test.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
     xgtrain = xgb.DMatrix(train.values, target.values)
     xgtest = xgb.DMatrix(test.values)
-
-    param = {'max_depth':10, 'eta':1, 'objective':'binary:logistic' }
+    #lambda 1 default alpha default 0
+    #param = {'max_depth':15, 'eta':1.75, 'objective':'binary:logistic', 'scale_pos_weight':  (1/averageHOFLikelihood)}
+    param = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  (1/averageHOFLikelihood)}
+    # test and tune this
     num_round = 2
     bst = xgb.train(param, xgtrain, num_round)
     # make prediction
     preds = bst.predict(xgtest)
+    # in the future do the prediction on the active players
 
     print(preds)
     print()
