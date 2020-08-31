@@ -5,7 +5,7 @@ import xgboost as xgb
 # Use position CSVs
 OL = ["C", "G", "OL", "OT", "T"]
 DB = ["CB","DB","FS","S","SS"]
-DE = ["DE", "DL"]
+DE = ["DE", "DL"] #check this one again
 FB = ["FB", "WB"]
 WR =["FL","WR","SE", "E"]
 DT = ["DG", "DL", "DT", "NT"]
@@ -15,11 +15,28 @@ LB = ["ILB", "LB", "OLB"]
 K = ["K"]
 P = ["P"]
 QB = ["QB"]
-positionGroupsDict = dict(OL=OL, DB=DB , DE=DE, FB=FB, WR=WR, DT=DT, RB=RB, TE=TE, LB=LB, K=K, P=P, QB=QB)
+
+positionGroupsDict = dict( DT=DT, RB=RB, TE=TE, LB=LB, K=K, P=P, OL=OL, DB=DB, DE=DE, FB=FB, QB=QB, WR=WR )
 positionGroupsDFDictTrain = {}
 positionGroupsDFDictTest = {}
 xgboostDataDict = {}
 xgboostLabelsDict = {}
+
+positionGroupsTrainingParamsDict = dict(DB={} , DE={}, FB={}, WR={}, DT={}, RB={}, TE={}, LB={}, K={}, P={}, QB={}, OL={})
+positionGroupsTrainingParamsDict["OL"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["DB"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["DE"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["WR"] = {'max_depth':10, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':5, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["DT"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["RB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["K"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["P"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["QB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["FB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+
+positionGroupsPosWeightsToBeSquaredDict = dict(WR=.5, DT=.75, RB=.75, TE=.75, LB=.75, K=.75, P=.75, QB=.75, OL=.75, DB=.75, DE=.75, FB=.5 )
 
 # create pandas df for each position group using files inside positionCSVsCurrentInclusive
 import pandas as pd
@@ -52,10 +69,12 @@ for positionGroup, positions in positionGroupsDict.items():
     test = test.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
     xgtrain = xgb.DMatrix(train.values, target.values)
     xgtest = xgb.DMatrix(test.values)
+
     #lambda 1 default alpha default 0
     #param = {'max_depth':15, 'eta':1.75, 'objective':'binary:logistic', 'scale_pos_weight':  (1/averageHOFLikelihood)}
-    param = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  (1/averageHOFLikelihood)}
-    # test and tune this
+    positionGroupsTrainingParamsDict[positionGroup]['scale_pos_weight'] = (1/averageHOFLikelihood)**positionGroupsPosWeightsToBeSquaredDict[positionGroup]
+    param = positionGroupsTrainingParamsDict[positionGroup]
+    
     num_round = 2
     bst = xgb.train(param, xgtrain, num_round)
     # make prediction
