@@ -16,7 +16,7 @@ K = ["K"]
 P = ["P"]
 QB = ["QB"]
 
-positionGroupsDict = dict(RB=RB, TE=TE, LB=LB, K=K, P=P, OL=OL, DB=DB, DE=DE, FB=FB, QB=QB, WR=WR, DT=DT )
+positionGroupsDict = dict(TE=TE, LB=LB, K=K, P=P, OL=OL, DB=DB, DE=DE, FB=FB, QB=QB, WR=WR, DT=DT, RB=RB )
 positionGroupsDFDictTrain = {}
 positionGroupsDFDictTest = {}
 xgboostDataDict = {}
@@ -28,7 +28,7 @@ positionGroupsTrainingParamsDict["DB"] = {'max_depth':200, 'eta':1.5, 'lambda': 
 positionGroupsTrainingParamsDict["DE"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["WR"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["DT"] = {'max_depth':20, 'eta':1.0, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["RB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["RB"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["K"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["P"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
