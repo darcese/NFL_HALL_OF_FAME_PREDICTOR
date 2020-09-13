@@ -16,7 +16,7 @@ K = ["K"]
 P = ["P"]
 QB = ["QB"]
 
-positionGroupsDict = dict( DT=DT, RB=RB, TE=TE, LB=LB, K=K, P=P, OL=OL, DB=DB, DE=DE, FB=FB, QB=QB, WR=WR )
+positionGroupsDict = dict(RB=RB, TE=TE, LB=LB, K=K, P=P, OL=OL, DB=DB, DE=DE, FB=FB, QB=QB, WR=WR, DT=DT )
 positionGroupsDFDictTrain = {}
 positionGroupsDFDictTest = {}
 xgboostDataDict = {}
@@ -26,8 +26,8 @@ positionGroupsTrainingParamsDict = dict(DB={} , DE={}, FB={}, WR={}, DT={}, RB={
 positionGroupsTrainingParamsDict["OL"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["DB"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["DE"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["WR"] = {'max_depth':10, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':5, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["DT"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["WR"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["DT"] = {'max_depth':20, 'eta':1.0, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["RB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["K"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
@@ -63,10 +63,15 @@ for positionGroup, positions in positionGroupsDict.items():
 
     train = positionGroupsDFDictTrain[positionGroup]
     target = train['HallOfFame']
+    if positionGroup == 'WR':
+       train = train.drop(['TotalYears'],axis=1)
     train = train.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
 
     test = positionGroupsDFDictTest[positionGroup]
+    if positionGroup == 'WR':
+        test = test.drop(['TotalYears'],axis=1)
     test = test.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
+
     xgtrain = xgb.DMatrix(train.values, target.values)
     xgtest = xgb.DMatrix(test.values)
 
