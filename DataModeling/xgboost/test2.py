@@ -16,7 +16,7 @@ K = ["K"]
 P = ["P"]
 QB = ["QB"]
 
-positionGroupsDict = dict(TE=TE, LB=LB, K=K, P=P, OL=OL, DB=DB, DE=DE, FB=FB, QB=QB, WR=WR, DT=DT, RB=RB )
+positionGroupsDict = dict(OL=OL, DB=DB, DE=DE, FB=FB, QB=QB, WR=WR, DT=DT, RB=RB, TE=TE, LB=LB, K=K, P=P)
 positionGroupsDFDictTrain = {}
 positionGroupsDFDictTest = {}
 xgboostDataDict = {}
@@ -29,14 +29,15 @@ positionGroupsTrainingParamsDict["DE"] = {'max_depth':200, 'eta':1.5, 'lambda': 
 positionGroupsTrainingParamsDict["WR"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["DT"] = {'max_depth':20, 'eta':1.0, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["RB"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["K"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["P"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["TE"] = {'max_depth':10, 'eta':0.05, 'lambda': 0.05, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["K"] = {'max_depth':100, 'eta':1.25, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':1, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["P"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':.4, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["QB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 positionGroupsTrainingParamsDict["FB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["LB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
 
-positionGroupsPosWeightsToBeSquaredDict = dict(WR=.5, DT=.75, RB=.75, TE=.75, LB=.75, K=.75, P=.75, QB=.75, OL=.75, DB=.75, DE=.75, FB=.5 )
+positionGroupsPosWeightsToBeSquaredDict = dict(WR=.5, DT=.75, RB=.75, TE=.4, LB=.75, K=.5, P=.00025, QB=.75, OL=.75, DB=.75, DE=.75, FB=.5 )
 
 # create pandas df for each position group using files inside positionCSVsCurrentInclusive
 import pandas as pd
@@ -63,12 +64,12 @@ for positionGroup, positions in positionGroupsDict.items():
 
     train = positionGroupsDFDictTrain[positionGroup]
     target = train['HallOfFame']
-    if positionGroup == 'WR':
+    if positionGroup == 'WR' or positionGroup == 'K' :
        train = train.drop(['TotalYears'],axis=1)
     train = train.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
 
     test = positionGroupsDFDictTest[positionGroup]
-    if positionGroup == 'WR':
+    if positionGroup == 'WR' or  positionGroup == 'K':
         test = test.drop(['TotalYears'],axis=1)
     test = test.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
 
