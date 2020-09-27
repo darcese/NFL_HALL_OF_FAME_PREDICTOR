@@ -23,19 +23,19 @@ xgboostDataDict = {}
 xgboostLabelsDict = {}
 
 positionGroupsTrainingParamsDict = dict(DB={} , DE={}, FB={}, WR={}, DT={}, RB={}, TE={}, LB={}, K={}, P={}, QB={}, OL={})
-positionGroupsTrainingParamsDict["OL"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["DB"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["DE"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["WR"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["DT"] = {'max_depth':20, 'eta':1.0, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["RB"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["TE"] = {'max_depth':10, 'eta':0.05, 'lambda': 0.05, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["K"] = {'max_depth':100, 'eta':1.25, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':1, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["P"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':.4, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["QB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["FB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
-positionGroupsTrainingParamsDict["LB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1}
+positionGroupsTrainingParamsDict["OL"] = { 'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["DB"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["DE"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["WR"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["DT"] = {'max_depth':20, 'eta':1.0, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["RB"] = {'max_depth':50, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["TE"] = {'max_depth':10, 'eta':0.05, 'lambda': 0.05, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["K"] = {'max_depth':100, 'eta':1.25, 'lambda': 0.5, 'grow_policy': 'lossguide', 'alpha':1, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["P"] = {'max_depth':200, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':.4, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["TE"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["QB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["FB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
+positionGroupsTrainingParamsDict["LB"] = {'max_depth':100, 'eta':1.5, 'lambda': 0.25, 'grow_policy': 'lossguide', 'alpha':0, 'tree_method': 'exact','objective':'binary:logistic', 'scale_pos_weight':  1, 'enable_experimental_json_serialization': True}
 
 positionGroupsPosWeightsToBeSquaredDict = dict(WR=.5, DT=.75, RB=.75, TE=.4, LB=.75, K=.5, P=.00025, QB=.75, OL=.75, DB=.75, DE=.75, FB=.5 )
 
@@ -74,6 +74,8 @@ for positionGroup, positions in positionGroupsDict.items():
     test = test.drop(['Name','URL', 'Position','LastYear' ,'Active','HallOfFame'],axis=1)
 
     xgtrain = xgb.DMatrix(train.values, target.values)
+   
+
     xgtest = xgb.DMatrix(test.values)
 
     #lambda 1 default alpha default 0
@@ -83,12 +85,19 @@ for positionGroup, positions in positionGroupsDict.items():
     
     num_round = 2
     bst = xgb.train(param, xgtrain, num_round)
+    bst.save_model(str(positionGroup) +'.json')
     # make prediction
+    #preds = bst.predict(xgtest)
+    # in the future do the prediction on the active players
+
+    #print(preds)
+    print()
+    #bst = xgb.Booster({'nthread': 4})  # init model
+    bst.load_model('model_file_name.json') 
     preds = bst.predict(xgtest)
     # in the future do the prediction on the active players
 
     print(preds)
-    print()
 ## ADD Weights, be able to tune weights
 #https://stackoverflow.com/questions/48079973/xgboost-sample-weights-vs-scale-pos-weight
 
