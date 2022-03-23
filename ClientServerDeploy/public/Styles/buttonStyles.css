@@ -1,5 +1,5 @@
 button {
-  border-radius: 2em / 2em;
+  border-radius: 25px;
   position: relative;
   top: 1em;
   background-color: transparent;
@@ -15,7 +15,7 @@ button {
   background-color: transparent;
   padding:1rem;
   margin:20px;
-  border-radius:2rem;
+  border-radius:25px;
   font-size:1.2rem;
   font-family: 'Roboto Slab', serif;
   color: rgb(67, 15, 80); 
@@ -50,7 +50,7 @@ button {
   background-color: transparent;
   padding:1rem;
   margin:20px;
-  border-radius:3rem;
+  border-radius:25px;
   font-size:1.2rem;
   font-family: 'Roboto Slab', serif;
   color: rgb(67, 15, 80); 
