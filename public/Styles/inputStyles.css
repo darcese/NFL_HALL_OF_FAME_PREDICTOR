@@ -1,4 +1,6 @@
 
+
+
 input {
     text-align: center;
   }
@@ -14,7 +16,6 @@ input {
   input{
     background-color: transparent;
     padding:1rem;
-    margin:1rem;
     font-size: 2rem;
     font-family: 'Roboto Slab', serif;
     font-size: 1.5em;
@@ -22,7 +23,7 @@ input {
     border-width: 0.5rem;
     border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
     transition: 0.6s;
-    border-radius: 3rem;
+    border-radius: 25px;
     height:3rem;
     border-style: solid;
     width:100px;
@@ -46,7 +47,7 @@ select option{
     border-width: 0.5rem;
     border-color: rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80)rgb(67, 15, 80);
     transition: 0.6s;
-    border-radius: 3rem;
+    border-radius: 25px;
     height:3rem;
     border-style: solid;
     width:275px;
@@ -57,11 +58,12 @@ select option{
   }
 
   #player-input-name{
+    margin-top: 20px;
     color:rgb(67, 15, 80);
     font-size: 1.4rem;
     width: 20rem;
     background-color: rgba(247, 184, 48,0.5);
-    border-radius: 3rem;
+    border-radius: 25px;
     height: 3rem;
     transition: 0.5s;
     border-style: solid;
@@ -82,14 +84,14 @@ select option{
     }
 
     #player-input-name{
-      margin-top: -20px;
+      margin-top: 20px;
       color:rgb(67, 15, 80);
       font-size: 1.2rem;
       text-align: center;
       width: 80%;
       padding-left:1rem;
       background-color: rgba(247, 184, 48,0.5);
-      border-radius: 2.5rem;
+      border-radius: 25px;
       height: 3rem;
       transition: 0.5s;
       border-style: solid;
@@ -108,10 +110,12 @@ select option{
   }
   
   #player-input-name:focus{
+    margin-top: 20px;
     border-style: solid;
   } 
   
   #player-input-name:active{
+    margin-top: 20px;
     border-style: solid;
   } 
   
@@ -138,12 +142,12 @@ select option{
   
   #player-input-name:focus{
     -webkit-appearance: none;
-    margin: 0;
+    margin-top: 20px;
   }
   
   #player-input-name:hover{
     -webkit-appearance: none;
-    margin: 0;
+    margin-top: 20px;
   }
   
   
@@ -151,21 +155,18 @@ select option{
   input[type="text"]:hover {
     -moz-appearance: textfield;
     -webkit-appearance: none;
-    margin: 0;
     -ms-appearance: textfield;
   }
   
   input[type="text"]:focus{
     -moz-appearance: textfield;
     -webkit-appearance: none;
-    margin: 0;
     -ms-appearance: textfield;
   }
   
   #player-input-name:hover::-webkit-outer-spin-button,
   #player-input-name:hover::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    margin: 0;
   }
 
   html {
