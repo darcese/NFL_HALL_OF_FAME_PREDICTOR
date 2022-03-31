@@ -4,6 +4,35 @@
 input {
     text-align: center;
   }
+
+.statInput{
+  /* Chrome, Safari, Edge, Opera */
+  position: relative;
+  padding: 10px;
+  height: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  top:5px;
+}
+
+
+.decrement, .increment {
+  position: relative;
+  padding: 0px 20px 15px;
+  height: 50px;
+  font-weight: bolder;
+  top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: x-large;
+}
+
+
+
+  /* Firefox */
+    
+  
+
   
   
   input:focus{
@@ -101,13 +130,10 @@ select option{
   
         
       }
-
-  #position-select{
-    
-      text-align: -webkit-auto;
-      padding-left: 45px;
-  
-  }
+      #position-select {
+        text-align: center;
+        
+      }
   
   #player-input-name:focus{
     margin-top: 20px;

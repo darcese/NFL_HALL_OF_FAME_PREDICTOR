@@ -8,12 +8,13 @@ function sendInputToApi(){
     let table = document.getElementById("predict-by-stats-table");
     statInputIds = []
     stats.forEach(element => {
-      statInputIds.push(element.replace(/\s/g, ''))
+      statInputIds.push(element.replace(/\s/g, '')+"statInput");
+      console.log(element.replace(/\s/g, '')+"statInput");
     });
 
     
     var ApiObject = {};
-    statInputIds.forEach(element => { ApiObject[element] = document.getElementById(element).value || 0;} );
+    statInputIds.forEach(element => { ApiObject[element.replace('statInput','')] = document.getElementById(element).value || 0;} );
     // var ApiObject = {
     //                 Position: ApiValuesAsArray[0].toUpperCase() || 'QB',
     //                 TotalYears: ApiValuesAsArray[1] || 0,
@@ -25,6 +26,7 @@ function sendInputToApi(){
     //                 };
     ApiObject['Position'] = document.getElementById("position-select").value; 
     ApiObject = JSON.stringify(ApiObject);
+    console.log(ApiObject);
   
     var req = new XMLHttpRequest();   // new HttpRequest instance 
 

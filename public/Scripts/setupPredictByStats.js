@@ -23,19 +23,54 @@ function selectedPositionChange(){
       let stats = ['Total Years',  'MVPs', 'Pro Bowls', 'All Pros', 'SB Wins', 'AP POYs'];
       let table = document.getElementById("predict-by-stats-table");
       statInputIds = []
+
+      function decrement(e) {
+        let statInput = e.target.nextElementSibling;
+        let min =  parseInt(statInput.min);
+        let value = parseInt(statInput.value);
+        if(min < value){
+          value -= 1;
+           document.getElementById(statInput.id).value = value;
+           statValuesChange();
+        }
+      }
+      
+      function increment(e) {
+        let statInput = e.target.previousElementSibling;
+        let max =  parseInt(statInput.max);
+        let value = parseInt(statInput.value);
+        if(value < max){
+          value += 1;
+           document.getElementById(statInput.id).value = value;
+           statValuesChange();
+        }
+      }
+
       stats.forEach(element => {
         table.insertRow(-1);
         let row =  table.rows.item(table.rows.length-1);
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         cell1.innerHTML = element;
-        console.log(element);
-        //element.replace since id cant have spaces
-        statInputIds.push(element.replace(/\s/g, ''))
-        cell2.innerHTML = '<input type="number" ' + ' id=' + element.replace(/\s/g, '') +' class=statInput ' +' name=' + element +' \
-  min="0" max="50" step="1">';
-      document.getElementById(element.replace(/\s/g, '')).addEventListener('input', statValuesChange, false);
         
+        //element.replace since id cant have spaces
+        statInputIds.push(element.replace(/\s/g, '')+"statInput");
+        cell2.innerHTML =   String.raw`<div class="container">
+        <button id=${element.replace(/\s/g, '')+"decrement"} class="decrement">
+        -
+        </button>
+        <input id=${element.replace(/\s/g, '')+"statInput"} value= 0 min=0 max=35 type="number" class="statInput" readonly >
+        <button id=${element.replace(/\s/g, '')+"increment"} class="increment">
+        +
+        </button>
+      </div>`;
+       
+        // element.replace(/\s/g, '')
+
+      document.getElementById(element.replace(/\s/g, '')+"decrement").addEventListener("click", decrement);
+      
+      document.getElementById(element.replace(/\s/g, '')+"increment").addEventListener("click", increment);
+      
       });
     } else{
       
@@ -52,10 +87,8 @@ function selectedPositionChange(){
   document.getElementById("position-select").addEventListener('change', selectedPositionChange, false);
 
 
-function statValuesChange(e){
-    if (isNaN(parseInt(e.target.value, 10)) == true){
-      e.target.value = '';
-    }
+function statValuesChange(){
+
     var shouldBeDisplayed = true;
    
     for (var id of statInputIds) { 
