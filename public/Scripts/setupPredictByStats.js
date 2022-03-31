@@ -33,11 +33,17 @@ function selectedPositionChange(){
            document.getElementById(statInput.id).value = value;
            statValuesChange();
         }
+        for(stat of statInputIds){
+          if(parseInt(document.getElementById("TotalYearsstatInput").value) < parseInt(document.getElementById(stat).value)){
+            document.getElementById(stat).value = document.getElementById("TotalYearsstatInput").value ;
+          }
+        }
       }
       
       function increment(e) {
         let statInput = e.target.previousElementSibling;
-        let max =  parseInt(statInput.max);
+        console.log('target id ' + e.target.id);
+        let max = "TotalYearsincrement" === e.target.id ? parseInt(statInput.max) : parseInt(document.getElementById("TotalYearsstatInput").value);
         let value = parseInt(statInput.value);
         if(value < max){
           value += 1;
@@ -89,13 +95,11 @@ function selectedPositionChange(){
 
 function statValuesChange(){
 
-    var shouldBeDisplayed = true;
-   
-    for (var id of statInputIds) { 
-      if (isNaN(parseInt(document.getElementById(id).value, 10)) === true){
-        shouldBeDisplayed = false;
-      }
-    }
+    
+    yearsPlayed = parseInt(document.getElementById("TotalYearsstatInput").value);
+
+    shouldBeDisplayed =  yearsPlayed > 0 ? true : false;
+
     if(shouldBeDisplayed=== true){
       document.getElementById("player-input-stats-predict").style.display = "flex";
     }
