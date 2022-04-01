@@ -102,8 +102,8 @@ function statValuesChange(){
       document.getElementById("player-input-stats-predict").style.display = "flex";
     }
     else{
-      document.getElementById("player-input-stats-predict").style.display = "none";
-      document.getElementById( "api-test-response-label").style.display= "none";
+      document.getElementById("player-input-stats-predict").style.display = "hidden";
+      document.getElementById( "api-test-response-label").style.display= "hidden";
     }
  
   }
