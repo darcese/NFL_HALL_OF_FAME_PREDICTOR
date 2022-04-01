@@ -26,6 +26,8 @@ input {
   margin-left: 0px;
   margin-right: 0px;
   font-size: x-large;
+  touch-action: manipulation;
+  
 }
 
 
