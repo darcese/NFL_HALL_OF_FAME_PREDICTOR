@@ -1,5 +1,4 @@
 function selectedPositionChange(){
-    console.log("position changed");
     changePredictByStatsTable();
   }
   
@@ -18,7 +17,7 @@ function selectedPositionChange(){
     document.getElementById("search-by-stats-container").style.marginTop = "2rem";
     document.getElementById("predict-by-stats-table").insertRow(-1);
        
-    console.log(document.getElementById("position-select").value);
+
     if (document.getElementById("position-select").value !=="POS VALUE") {
       let stats = ['Total Years',  'MVPs', 'Pro Bowls', 'All Pros', 'SB Wins', 'AP POYs'];
       let table = document.getElementById("predict-by-stats-table");
@@ -42,7 +41,6 @@ function selectedPositionChange(){
       
       function increment(e) {
         let statInput = e.target.previousElementSibling;
-        console.log('target id ' + e.target.id);
         let max = "TotalYearsincrement" === e.target.id ? parseInt(statInput.max) : parseInt(document.getElementById("TotalYearsstatInput").value);
         let value = parseInt(statInput.value);
         if(value < max){

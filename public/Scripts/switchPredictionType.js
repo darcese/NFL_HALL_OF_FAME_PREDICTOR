@@ -4,7 +4,7 @@ var dataList = document.getElementById("player-list-input");
 
 ///////////////////////////////////
 function goButtonClick(){
-    console.log("hi");
+
 }
 //////////////////////////////////////////
 var currentSelection = undefined;
@@ -16,7 +16,6 @@ function searchTypeChange(e){
   e.target.innerText.toUpperCase() === playerName ? 
   
   (
-  console.log("playername button selected"),
 
   
   document.getElementById("search-by-stats-container").style.display= "none",

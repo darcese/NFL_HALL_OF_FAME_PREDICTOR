@@ -22,11 +22,7 @@ function playerNameCheck(){
   function PredictByNameReady(input_valid){
     document.getElementById("api-test-response-label").innerHTML = "";
     if (input_valid === true){
-      console.log("hi 1 ");
-      console.log(document.getElementById("player-input-name").value);
-      console.log(clientPlayerNametoServerUIDDictionary[document.getElementById("player-input-name").value]);
-      console.log("hi 2 ");
-      console.log("input valid");
+
       document.getElementById("player-input-name").style.color= "rgb(247, 184, 48)";
       document.getElementById("player-input-name").style.borderColor= "rgb(247, 184, 48)";
       document.getElementById("player-input-name").style.backgroundColor= "rgba(67, 15, 80,0.5)";
@@ -35,7 +31,7 @@ function playerNameCheck(){
      // document.getElementById("go-button").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color: rgba(0,0,0,1);";
     }
     else{
-      console.log("input not valid");
+      
 
       document.getElementById("player-input-name-predict").style.display="none";
       document.getElementById("player-input-name").style.color= "rgb(67, 15, 80)" ;
@@ -98,7 +94,7 @@ function playerNameCheck(){
 
  var playerNameInput = document.getElementById("player-input-name");
  playerNameInput.addEventListener('input', function(){
-   console.log(this.value + this.label);
+   
  });
 
   document.getElementById("player-input-name-predict").addEventListener('click', sendPlayerNameToAPIForPrediction, false);

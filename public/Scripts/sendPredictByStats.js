@@ -9,7 +9,6 @@ function sendInputToApi(){
     statInputIds = []
     stats.forEach(element => {
       statInputIds.push(element.replace(/\s/g, '')+"statInput");
-      console.log(element.replace(/\s/g, '')+"statInput");
     });
 
     
@@ -26,7 +25,6 @@ function sendInputToApi(){
     //                 };
     ApiObject['Position'] = document.getElementById("position-select").value; 
     ApiObject = JSON.stringify(ApiObject);
-    console.log(ApiObject);
   
     var req = new XMLHttpRequest();   // new HttpRequest instance 
 
