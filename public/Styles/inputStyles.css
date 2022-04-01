@@ -13,6 +13,7 @@ input {
   -webkit-appearance: none;
   -moz-appearance: textfield;
   top:5px;
+  text-align: center;
 }
 
 
