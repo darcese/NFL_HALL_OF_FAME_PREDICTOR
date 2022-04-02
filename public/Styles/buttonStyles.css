@@ -103,3 +103,7 @@ button {
     border-style:solid;
   }
 }
+
+#player-input-stats-predict{
+  top: -9px;
+}
