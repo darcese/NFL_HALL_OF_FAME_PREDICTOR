@@ -41,7 +41,7 @@ function sendInputToApi(){
           document.getElementById( "api-test-response-label").style.display= "flex";
           let odds = Number(Number(req.responseText).toFixed(2)* 100 ) ;
           document.getElementById("api-test-response-label").innerHTML =   odds > 1 ? odds + '%  induction chance.' : '0% induction chance.' ;
-          window.scrollBy(0, 50);
+          //window.scrollBy(0, 50);
        
         }
       }
