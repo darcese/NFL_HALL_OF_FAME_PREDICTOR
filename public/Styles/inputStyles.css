@@ -148,11 +148,11 @@ select option{
       
       }
 
-      @media(max-width: 800px){
+      @media(max-width: 550px){
         #position-select{
           padding-left: 70px;
         }      
-        @media(max-width: 550px){
+        @media(max-width: 380px){
           #position-select{
             padding-left: 40px;
           }      
