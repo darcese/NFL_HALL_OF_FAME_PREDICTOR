@@ -87,6 +87,7 @@ select option{
     text-align: center;
     text-align-last: center;
     -moz-text-align-last: center;
+  
   }
 
   #player-input-name{
@@ -107,10 +108,11 @@ select option{
     .statInput{
       width: 40px;
       font-size:1.4rem;
+      top: 2px;
     }
 
     .increment, .decrement{
-      top: 5px;
+      top: 2px;
     }
  
 
@@ -139,9 +141,19 @@ select option{
         
       }
       #position-select {
-        text-align: center;
-        
+ 
+          text-align: center;
+          text-align-last: center;
+          -moz-text-align-last: center;
+      
       }
+
+      @media(max-width: 550px){
+        #position-select{
+          padding-left: 50px;
+        }      
+      }
+     
   
   #player-input-name:focus{
     margin-top: 20px;

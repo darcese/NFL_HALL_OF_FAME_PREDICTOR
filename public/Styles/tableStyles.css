@@ -1,43 +1,20 @@
-table{
-  
-}
-td,
-th {
-    border:none;
-    border-radius: 25px;
-    color: rgb(247, 184, 48);
-    background-color: rgba(83, 83, 83, 0.0);
-    text-align: center;
-    padding: 10px;
-    margin: 0px;
-    
-}
-
-thead,
-tfoot {
-    margin:0px;
-    padding: 10px;
-    border:none;
-    background-color: rgba(83, 83, 83, 0.0);
-    color: rgb(247, 184, 48);
-}
-
-#predict-by-stats-table thead, tfoot, td, th, tr{
+thead, tfoot, td, th, tr{
     border:none;
     padding: 10px;
     margin:none;
     border-color: rgba(83, 83, 83, 0.2);
-    border-spacing:0px;
-    
+    border-spacing:0px;   
     font-family: 'Roboto Slab', serif;
     color: rgb(247, 184, 48);     
 }
 
-@media (max-width:550){
-    #predict-by-stats-table thead, tfoot, td, th, tr{
+
+
+@media (max-width:550px){
+   #predict-by-stats-table thead, tfoot, td, th, tr{
         border:none;
-        padding: 4px;
-        margin: -10px;
+        padding: 3px;
+        margin: 0px;
         border-color: rgba(83, 83, 83, 0.2);
         border-spacing:0px;
         
@@ -45,7 +22,21 @@ tfoot {
         color: rgb(247, 184, 48);     
         font-size: 1em;
     }
-    .statInput {
-        margin-left: 0px;
-    }
+
+}
+
+    @media (max-width:380px){
+        #predict-by-stats-table thead, tfoot, td, th, tr{
+            border:none;
+            padding: 3px;
+            margin: 0px;
+            border-color: rgba(83, 83, 83, 0.2);
+            border-spacing:0px;
+            
+            font-family: 'Roboto Slab', serif;
+            color: rgb(247, 184, 48);     
+            font-size: 0.95em;
+        }
+
+
 }

@@ -50,7 +50,7 @@ button {
  
   background-color: transparent;
   padding:1rem;
-  margin:20px;
+  margin:0px;
   border-radius:25px;
   font-size:1.2rem;
   font-family: 'Roboto Slab', serif;
@@ -102,3 +102,4 @@ button {
     color:rgb(247, 184, 48);
     border-style:solid;
   }
+}
