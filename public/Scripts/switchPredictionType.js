@@ -36,7 +36,9 @@ function searchTypeChange(e){
   
   
   document.getElementById("player-input-name").focus(), 
-
+  document.getElementById( "api-test-response-label").style.display= "none",
+  document.getElementById( "player-input-stats-predict").style.display= "none",
+  document.getElementById( "player-input-name-predict").style.display= "none",
  
   playerNameCheck()
   ): 
@@ -57,9 +59,9 @@ function searchTypeChange(e){
   document.getElementById("playerNameButton1").style.borderStyle = "solid",
   document.getElementById("playerNameButton1").borderStyle = "solid",
   changePredictByStatsTable(),
-  document.getElementById( "api-test-response-label").style.display= "hidden",
-  document.getElementById( "player-input-stats-predict").style.display= "hidden",
-  document.getElementById( "player-input-name-predict").style.display= "hidden"
+  document.getElementById( "api-test-response-label").style.display= "none",
+  document.getElementById( "player-input-stats-predict").style.display= "none",
+  document.getElementById( "player-input-name-predict").style.display= "none"
 
   );
 }
