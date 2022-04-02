@@ -38,10 +38,10 @@ function sendInputToApi(){
         if (req.status === 200) {
           // Parse the JSON
           
-          document.getElementById( "api-test-response-label").style.display= "flex";
           let odds = Number(Number(req.responseText).toFixed(2)* 100 ) ;
+          document.getElementById("api-test-response-div").style.visibility="visible";
           document.getElementById("api-test-response-label").innerHTML =   odds > 1 ? odds + '%  induction chance.' : '0% induction chance.' ;
-          //window.scrollBy(0, 50);
+          document.getElementById("api-test-response-label").scrollIntoView();
        
         }
       }

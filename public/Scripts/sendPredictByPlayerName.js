@@ -24,13 +24,14 @@ function playerNameCheck(){
       document.getElementById("player-input-name").style.color= "rgb(247, 184, 48)";
       document.getElementById("player-input-name").style.borderColor= "rgb(247, 184, 48)";
       document.getElementById("player-input-name").style.backgroundColor= "rgba(67, 15, 80,0.5)"; 
-      document.getElementById("player-input-name-predict").style.display="flex";
+      document.getElementById("player-input-name-predict").style.visibility="visible";
      // document.getElementById("go-button").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color: rgba(0,0,0,1);";
     }
     else{
       
 
-      document.getElementById("player-input-name-predict").style.display="none";
+      document.getElementById("player-input-name-predict").style.visibility="hidden";
+      document.getElementById("api-test-response-div").style.visibility="hidden";
       document.getElementById("player-input-name").style.color= "rgb(67, 15, 80)" ;
       document.getElementById("player-input-name").style.borderColor= "rgb(67, 15, 80)";
       document.getElementById("player-input-name").style.backgroundColor= "rgba(247, 184, 48, 0.5)";
@@ -74,10 +75,10 @@ function playerNameCheck(){
         if (req.status === 200) {
           // Parse the JSON
           
-        document.getElementById( "api-test-response-label").style.display= "flex";
+        document.getElementById("api-test-response-div").style.visibility="visible";
         let odds = Number(Number(req.responseText).toFixed(2)* 100 ) ;
         document.getElementById("api-test-response-label").innerHTML =   odds > 1 ? odds + '% induction chance.' : '0% induction chance.' ;
-        //window.scrollBy(0, 50);
+        document.getElementById("api-test-response-label").scrollIntoView();
         }
       }
     };

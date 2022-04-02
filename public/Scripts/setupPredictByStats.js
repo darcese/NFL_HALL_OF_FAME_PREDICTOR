@@ -10,7 +10,7 @@ function selectedPositionChange(){
   function changePredictByStatsTable(){
    
     deletePositionRelatedRows();
-    document.getElementById("search-by-stats-container").style.display = "flex";
+
     document.getElementById("search-by-stats-container").style.alignItems = "center";
     document.getElementById("search-by-stats-container").style.justifyContent = "center";
     document.getElementById("search-by-stats-container").style.margin = "auto";
@@ -81,9 +81,8 @@ function selectedPositionChange(){
     } else{
       
     }
-    document.getElementById("player-input-stats-predict").style.display = "none";
-    document.getElementById( "api-test-response-label").style.display= "none";
   }
+
     
   function deletePositionRelatedRows(){
     while ( document.getElementById("predict-by-stats-table").rows.length > 1) {
@@ -103,11 +102,12 @@ function statValuesChange(){
     shouldBeDisplayed =  yearsPlayed > 0 ? true : false;
 
     if(shouldBeDisplayed=== true){
-      document.getElementById("player-input-stats-predict").style.display = "flex";
+      document.getElementById("player-input-stats-predict").style.visibility="visible";
+      document.getElementById("api-test-response-div").style.visibility="hidden";
     }
     else{
-      document.getElementById("player-input-stats-predict").style.display = "none";
-      document.getElementById( "api-test-response-label").style.display= "none";
+      document.getElementById("player-input-stats-predict").style.visibility="hidden";
+      document.getElementById("api-test-response-div").style.visibility="hidden";
     }
  
   }
