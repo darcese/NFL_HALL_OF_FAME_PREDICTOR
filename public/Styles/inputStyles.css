@@ -147,6 +147,10 @@ select option{
           -moz-text-align-last: center;
       
       }
+      @media(max-width: 800px){
+        #position-select{
+          padding-left: 90px;
+        }   
 
       @media(max-width: 550px){
         #position-select{
