@@ -25,6 +25,7 @@ function sendInputToApi(){
     //                 };
     ApiObject['Position'] = document.getElementById("position-select").value; 
     ApiObject = JSON.stringify(ApiObject);
+
   
     var req = new XMLHttpRequest();   // new HttpRequest instance 
 
@@ -38,7 +39,8 @@ function sendInputToApi(){
           // Parse the JSON
           
           document.getElementById( "api-test-response-label").style.display= "flex";
-          document.getElementById("api-test-response-label").innerHTML =   Number(Number(req.responseText).toFixed(2)* 100 ) + '%';
+          let odds = Number(Number(req.responseText).toFixed(2)* 100 ) ;
+          document.getElementById("api-test-response-label").innerHTML =   odds > 1 ? odds + '% Chance' : '0 % Chance' ;
           window.scrollBy(0, 100);
        
         }

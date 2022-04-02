@@ -1,5 +1,3 @@
-
-
 function playerNameCheck(){
     let player_input_value = document.getElementById("player-input-name").value.replace(/ /gi, "").toUpperCase();
     let player_list = document.getElementById("player-list-input");
@@ -25,8 +23,7 @@ function playerNameCheck(){
 
       document.getElementById("player-input-name").style.color= "rgb(247, 184, 48)";
       document.getElementById("player-input-name").style.borderColor= "rgb(247, 184, 48)";
-      document.getElementById("player-input-name").style.backgroundColor= "rgba(67, 15, 80,0.5)";
-  
+      document.getElementById("player-input-name").style.backgroundColor= "rgba(67, 15, 80,0.5)"; 
       document.getElementById("player-input-name-predict").style.display="flex";
      // document.getElementById("go-button").style="border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color: rgba(0,0,0,1);";
     }
@@ -37,8 +34,6 @@ function playerNameCheck(){
       document.getElementById("player-input-name").style.color= "rgb(67, 15, 80)" ;
       document.getElementById("player-input-name").style.borderColor= "rgb(67, 15, 80)";
       document.getElementById("player-input-name").style.backgroundColor= "rgba(247, 184, 48, 0.5)";
-  
-      "border-color:rgb(167, 230, 167); background-color: rgb(167, 230, 167); color= rgba(0,0,0,1);";
     }
   }
   
@@ -80,7 +75,8 @@ function playerNameCheck(){
           // Parse the JSON
           
         document.getElementById( "api-test-response-label").style.display= "flex";
-        document.getElementById("api-test-response-label").innerHTML =   Number(Number(req.responseText).toFixed(2)* 100 ) + '%';
+        let odds = Number(Number(req.responseText).toFixed(2)* 100 ) ;
+        document.getElementById("api-test-response-label").innerHTML =   odds > 1 ? odds + '% Chance' : '0 % Chance' ;
         window.scrollBy(0, 100);
         }
       }

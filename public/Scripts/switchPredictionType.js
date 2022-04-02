@@ -2,15 +2,14 @@ var dataList = document.getElementById("player-list-input");
 
 
 
-///////////////////////////////////
-function goButtonClick(){
 
-}
-//////////////////////////////////////////
+//////////////////////////////////////////player-input-stats-predict
 var currentSelection = undefined;
 // DEALING WITH SWITCHES FROM CHANGES IN BY PREDICTING BY NAME OR BY ENTERING STATS
 function searchTypeChange(e){
-  document.getElementById( "api-test-response-label").style.display= "none";
+  document.getElementById( "api-test-response-label").style.display= "hidden";
+  document.getElementById( "player-input-stats-predict").style.display= "hidden";
+  document.getElementById( "player-input-name-predict").style.display= "hidden";
   let playerName = "Player Name".toUpperCase();
   currentSelection = e.target.getAttribute('id');
   e.target.innerText.toUpperCase() === playerName ? 
@@ -37,7 +36,7 @@ function searchTypeChange(e){
   
   
   document.getElementById("player-input-name").focus(), 
-  
+
  
   playerNameCheck()
   ): 
@@ -57,7 +56,11 @@ function searchTypeChange(e){
   document.getElementById("playerNameButton1").style.backgroundColor = "rgba(67, 15, 80, 0.5)",
   document.getElementById("playerNameButton1").style.borderStyle = "solid",
   document.getElementById("playerNameButton1").borderStyle = "solid",
-  changePredictByStatsTable()
+  changePredictByStatsTable(),
+  document.getElementById( "api-test-response-label").style.display= "hidden",
+  document.getElementById( "player-input-stats-predict").style.display= "hidden",
+  document.getElementById( "player-input-name-predict").style.display= "hidden"
+
   );
 }
 // ASSOCIATED EVENT LISTENTER
@@ -77,6 +80,9 @@ document.getElementById("player-input-name-predict").addEventListener('mousemove
 document.getElementById("player-input-name-predict").addEventListener('mouseout', makeButtonAppearInactive, false);
 document.getElementById("player-input-stats-predict").addEventListener('mousemove', makeButtonAppearActive, false);
 document.getElementById("player-input-stats-predict").addEventListener('mouseout', makeButtonAppearInactive, false);
+document.getElementById( "api-test-response-label").style.display= "hidden";
+document.getElementById( "player-input-stats-predict").style.display= "hidden";
+document.getElementById( "player-input-name-predict").style.display= "hidden";
 
 function  makeButtonAppearActive(){
   

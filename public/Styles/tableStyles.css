@@ -34,56 +34,18 @@ tfoot {
 }
 
 @media (max-width:550){
-    table{
-        margin-left:20px;
-        width: 90%;
-    }
-    td
-    {
-        border:none;
-        border-radius: 25px;
-        color: rgb(247, 184, 48);
-        background-color: rgba(83, 83, 83, 0.0);
-        text-align: right;
-        padding: 10px;
-        width: 30%;
-        font-size: 1.2rem;
-        
-        
-    }
-    
-    th {
-        border:none;
-        border-radius: 25px;
-        color: rgb(247, 184, 48);
-        background-color: rgba(83, 83, 83, 0.0);
-        text-align: center;
-        padding: 10px;
-        margin-left: 10px;
-        
-    }
-    
-    thead,
-    tfoot {
-        margin:0px;
-        padding: 10px;
-        border:none;
-        background-color: rgba(83, 83, 83, 0.0);
-        color: rgb(247, 184, 48);
-    }
-    
     #predict-by-stats-table thead, tfoot, td, th, tr{
         border:none;
-        padding: 10px;
-        margin:none;
+        padding: 4px;
+        margin: -10px;
         border-color: rgba(83, 83, 83, 0.2);
         border-spacing:0px;
         
         font-family: 'Roboto Slab', serif;
         color: rgb(247, 184, 48);     
-    } 
-
+        font-size: 1em;
+    }
     .statInput {
-        margin-left: -2rem;
+        margin-left: 0px;
     }
 }

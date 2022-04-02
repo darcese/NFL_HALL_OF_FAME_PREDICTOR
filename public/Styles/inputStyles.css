@@ -109,6 +109,11 @@ select option{
       font-size:1.4rem;
     }
 
+    .increment, .decrement{
+      top: 5px;
+    }
+ 
+
     #position-select{
       font-size:1.4rem;
       width: 140px;
@@ -201,3 +206,10 @@ select option{
   html {
     scroll-behavior: smooth;
   }
+
+  #player-input-stats-predict{
+    bottom: 0em;
+    top: -15px;
+    margin-top: 23px;
+  }    
+  

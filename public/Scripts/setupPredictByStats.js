@@ -16,7 +16,8 @@ function selectedPositionChange(){
     document.getElementById("search-by-stats-container").style.margin = "auto";
     document.getElementById("search-by-stats-container").style.marginTop = "2rem";
     document.getElementById("predict-by-stats-table").insertRow(-1);
-       
+
+    
 
     if (document.getElementById("position-select").value !=="POS VALUE") {
       let stats = ['Total Years',  'MVPs', 'Pro Bowls', 'All Pros', 'SB Wins', 'AP POYs'];
@@ -41,6 +42,7 @@ function selectedPositionChange(){
       
       function increment(e) {
         let statInput = e.target.previousElementSibling;
+
         let max = "TotalYearsincrement" === e.target.id ? parseInt(statInput.max) : parseInt(document.getElementById("TotalYearsstatInput").value);
         let value = parseInt(statInput.value);
         if(value < max){
@@ -79,6 +81,8 @@ function selectedPositionChange(){
     } else{
       
     }
+    document.getElementById("player-input-stats-predict").style.display = "none";
+    document.getElementById( "api-test-response-label").style.display= "none";
   }
     
   function deletePositionRelatedRows(){
@@ -102,32 +106,9 @@ function statValuesChange(){
       document.getElementById("player-input-stats-predict").style.display = "flex";
     }
     else{
-      document.getElementById("player-input-stats-predict").style.display = "hidden";
-      document.getElementById( "api-test-response-label").style.display= "hidden";
+      document.getElementById("player-input-stats-predict").style.display = "none";
+      document.getElementById( "api-test-response-label").style.display= "none";
     }
  
   }
-  ////////////////////////////////////////////
   
-  
-  //// Delete later and capitalize stuff manually
-  //const searchByDiv = document.getElementById("enter-string-or-stats-option-container");
-  //const searchByDivChildren = searchByDiv.children;
-  
-  //for ( var i = 0; i < searchByDivChildren.length; i++) {
-  //    searchByDivChildren[i].innerHTML = searchByDivChildren[i].innerHTML.toUpperCase();
-   // }
-  
-  
-  
-    ///////////////////api testing only
-  
-    // <input type="text" id="api-test-input-text"></input>
-    //<button type="submit" id="api-test-submit-button"></button>
-  // [ TotalYears[index],\
-  //MVP[index], \
-  //ProBowl[index], \
-  //AllPro[index], \
-  //SbChamp[index], \
-  //APpoy[index] \
-  //] for index, element in  enumerate(TotalYears)]
