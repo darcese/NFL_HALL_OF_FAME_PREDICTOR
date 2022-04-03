@@ -1,3 +1,4 @@
+eventListersAdded = false;
 function selectedPositionChange(){
     changePredictByStatsTable();
   }
@@ -9,7 +10,13 @@ function selectedPositionChange(){
   
   function changePredictByStatsTable(){
    
-    deletePositionRelatedRows();
+    if(document.getElementById("position-select").value === "POS VALUE"){
+      document.getElementById("player-input-stats-predict").style.visibility="hidden";
+      document.getElementById("api-test-response-div").style.visibility="hidden";
+      setTimeout(50,deletePositionRelatedRows);
+    }
+
+
 
     document.getElementById("search-by-stats-container").style.alignItems = "center";
     document.getElementById("search-by-stats-container").style.justifyContent = "center";
@@ -65,7 +72,7 @@ function selectedPositionChange(){
         <button id=${element.replace(/\s/g, '')+"decrement"} class="decrement">
         -
         </button>
-        <input id=${element.replace(/\s/g, '')+"statInput"} value= 0 min=0 max=35 type="number" class="statInput" readonly >
+        <input id=${element.replace(/\s/g, '')+"statInput"} value= 0 min=0 max=35 type="number" class="statInput" step="1" readonly >
         <button id=${element.replace(/\s/g, '')+"increment"} class="increment">
         +
         </button>
@@ -73,9 +80,13 @@ function selectedPositionChange(){
        
         // element.replace(/\s/g, '')
 
-      document.getElementById(element.replace(/\s/g, '')+"decrement").addEventListener("click", decrement);
-      
-      document.getElementById(element.replace(/\s/g, '')+"increment").addEventListener("click", increment);
+        if(eventListersAdded === false){
+          document.getElementById(element.replace(/\s/g, '')+"decrement").addEventListener("click", decrement);     
+          document.getElementById(element.replace(/\s/g, '')+"increment").addEventListener("click", increment);     
+          eventListersAdded = true;
+        }
+
+
       
       });
     } else{
@@ -99,7 +110,7 @@ function statValuesChange(){
     
     yearsPlayed = parseInt(document.getElementById("TotalYearsstatInput").value);
 
-    shouldBeDisplayed =  yearsPlayed > 0 ? true : false;
+    shouldBeDisplayed =  yearsPlayed > 0  && document.getElementById("position-select").value !== "POS VALUE" ? true : false;
 
     if(shouldBeDisplayed=== true){
       document.getElementById("player-input-stats-predict").style.visibility="visible";

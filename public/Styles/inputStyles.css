@@ -27,14 +27,22 @@ input {
   margin-right: 0px;
   font-size: x-large;
   touch-action: manipulation;
-  
 }
 
 
-
-  /* Firefox */
-    
-  
+@media (max-width: 550px){
+  .decrement, .increment {
+    position: relative;
+    padding: 4px 20px 15px;
+    height: 50px;
+    font-weight: bolder;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: x-large;
+    touch-action: manipulation;
+    border-width: 0.2em;
+  }
+}
 
   
   
@@ -111,6 +119,8 @@ select option{
       top: 2px;
     }
 
+
+
     .increment, .decrement{
       top: 2px;
     }
@@ -139,7 +149,13 @@ select option{
   
   
         
-      }
+  }
+
+  @media(max-width: 550px){
+    .statInput{
+      border-width: 0.2em;
+    }
+  }
       #position-select {
  
           text-align: center;
@@ -149,17 +165,21 @@ select option{
       }
       @media(max-width: 800px){
         #position-select{
-          padding-left: 80px;
+          padding-left: 30px;
         }   
+      }
 
       @media(max-width: 550px){
         #position-select{
-          padding-left: 70px;
+          padding-left: 30px;
         }      
+      }
         @media(max-width: 380px){
           #position-select{
-            padding-left: 40px;
-          }      
+            padding-left: 30px;
+          }     
+          
+        
       }
      
   
@@ -232,4 +252,3 @@ select option{
     top: -15px;
     margin-top: 23px;
   }    
-  

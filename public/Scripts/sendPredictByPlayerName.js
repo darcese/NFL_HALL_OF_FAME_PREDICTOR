@@ -83,8 +83,7 @@ function playerNameCheck(){
       }
     };
     
-    //////////let ApiObject1 = document.getElementById("position-select").value
-  
+
   }
     
  // document.getElementById("api-test-submit-button").addEventListener('click', sendInputToApi, false);
