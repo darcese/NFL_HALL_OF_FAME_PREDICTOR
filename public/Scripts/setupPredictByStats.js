@@ -1,4 +1,4 @@
-eventListersAdded = false;
+let rowsAdded = false;
 function selectedPositionChange(){
     changePredictByStatsTable();
   }
@@ -70,6 +70,7 @@ function selectedPositionChange(){
       }
 
       stats.forEach(element => {
+        if(rowsAdded === false){
         table.insertRow(-1);
         let row =  table.rows.item(table.rows.length-1);
         let cell1 = row.insertCell(0);
@@ -90,15 +91,17 @@ function selectedPositionChange(){
        
         // element.replace(/\s/g, '')
 
-        if(eventListersAdded === false){
-          document.getElementById(element.replace(/\s/g, '')+"decrement").addEventListener("click", decrement);     
-          document.getElementById(element.replace(/\s/g, '')+"increment").addEventListener("click", increment);     
-          eventListersAdded = true;
+  
+        document.getElementById(element.replace(/\s/g, '')+"decrement").addEventListener("click", decrement);     
+        document.getElementById(element.replace(/\s/g, '')+"increment").addEventListener("click", increment);     
+        
         }
+    
 
 
       
       });
+      rowsAdded = true;
     } else{
       
     }
