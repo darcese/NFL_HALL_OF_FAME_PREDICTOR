@@ -9,11 +9,21 @@ function selectedPositionChange(){
     }
   
   function changePredictByStatsTable(){
-   
+    document.getElementById("api-test-response-div").style.visibility="hidden";
     if(document.getElementById("position-select").value === "POS VALUE"){
-      document.getElementById("player-input-stats-predict").style.visibility="hidden";
-      document.getElementById("api-test-response-div").style.visibility="hidden";
+      document.getElementById("player-input-stats-predict").style.visibility="hidden";    
       setTimeout(50,deletePositionRelatedRows);
+    }
+    else {
+
+      try{
+        if(parseInt(document.getElementById("TotalYearsstatInput").value) > 0){
+          document.getElementById("player-input-stats-predict").style.visibility="visible";
+        }
+      }
+      catch(e){
+
+      }
     }
 
 
