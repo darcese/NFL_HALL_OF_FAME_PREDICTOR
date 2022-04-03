@@ -76,7 +76,7 @@ function playerNameCheck(){
           // Parse the JSON
           
         document.getElementById("api-test-response-div").style.visibility="visible";
-        let odds = Number(Number(req.responseText).toFixed(2)* 100 ) ;
+        let odds = Math.round(Number(Number(req.responseText).toFixed(2)* 100 )) ;
         document.getElementById("api-test-response-label").innerHTML =   odds > 1 ? odds + '% induction chance.' : '0% induction chance.' ;
         document.getElementById("api-test-response-label").scrollIntoView();
         }
